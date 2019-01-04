@@ -61,11 +61,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.actors[id(item)] = actor
         self.renderer.AddActor(actor)
+        self.renderer.ResetCamera()
         self.vtk_widget.update()
 
     def remove_actor(self, item):
         self.renderer.RemoveActor(self.actors[id(item)])
         self.actors.pop(id(item))
+        self.renderer.ResetCamera()
         self.vtk_widget.update()
 
     def delete_selected(self):
